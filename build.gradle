@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'com.nerydlg'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-core
+    compile group: 'org.deeplearning4j', name: 'deeplearning4j-core', version: '1.0.0-alpha'
+    // https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-nlp
+    compile group: 'org.deeplearning4j', name: 'deeplearning4j-nlp', version: '1.0.0-alpha'
+    // https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-ui
+    compile group: 'org.deeplearning4j', name: 'deeplearning4j-ui_2.11', version: '1.0.0-alpha'
+    // https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-ui-components
+    compile group: 'org.deeplearning4j', name: 'deeplearning4j-ui-components', version: '1.0.0-alpha'
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
+
+}
