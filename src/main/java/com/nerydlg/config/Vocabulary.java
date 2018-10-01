@@ -65,8 +65,8 @@ public class Vocabulary {
         return inputF;
     }
 
-    public void save() {
+    public void save(String path) {
         log.info("Saving the model ...");
-        WordVectorSerializer.writeWord2VecModel(vec, "pathToSaveModel.txt");
+        WordVectorSerializer.writeWord2VecModel(vec, path);
     }
 }
