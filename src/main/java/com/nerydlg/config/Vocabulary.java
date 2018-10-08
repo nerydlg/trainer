@@ -1,5 +1,6 @@
 package com.nerydlg.config;
 
+import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
@@ -12,18 +13,17 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.NoSuchFileException;
-import java.util.Random;
 
 public class Vocabulary {
 
     private static final Logger log = LoggerFactory.getLogger(Vocabulary.class);
     private String fileInput;
-    private String fileoutput;
+    private String fileOutput;
     private Word2Vec word2Vec;
 
-    public Vocabulary(String fileInput, String fileoutput) {
+    public Vocabulary(String fileInput, String fileOutput) {
         this.fileInput = fileInput;
-        this.fileoutput = fileoutput;
+        this.fileOutput = fileOutput;
     }
 
     public void generateVocab(int minWordFrequency, int iterations, int layerSize,
@@ -55,7 +55,7 @@ public class Vocabulary {
     private File returnFileIfExists(String file) throws FileNotFoundException, NoSuchFileException {
         log.info("Checking if file exists: {}", file);
         if(file == null) {
-            throw new NoSuchFileException("The file input is needed to generate the vocab");
+            throw new NoSuchFileException("The input file is needed to generate the vocab");
         }
 
         File inputF = new File(file);
@@ -65,8 +65,8 @@ public class Vocabulary {
         return inputF;
     }
 
-    public void save(String path) {
+    public void save() {
         log.info("Saving the model ...");
-        WordVectorSerializer.writeWord2VecModel(vec, path);
+        WordVectorSerializer.writeWord2VecModel(word2Vec, fileOutput);
     }
 }
